@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Wordly</title>
+</head>
+<body>
+    <div class="active-area">
+        <h1>Вордли</h1>
+        <h4>Уровень 1</h4>
+        <div class="game_field">
+            <input id="first_letter" type="text" maxlength="1" autofocus>
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input id="last_letter" type="text" maxlength="1">
+
+            <input id="second_try" type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input id="last_letter" type="text" maxlength="1">
+
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input id="last_letter" type="text" maxlength="1">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input id="last_letter" type="text" maxlength="1">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input type="text" maxlength="1" oninput="inpJump(this)">
+            <input id="last_letter" type="text" maxlength="1">
+        </div>
+        <div class="keyboard">
+            <div class="first-line">
+                <button>й</button>
+                <button>ц</button>
+                <button>у</button>
+                <button>к</button>
+                <button>е</button>
+                <button>н</button>
+                <button>г</button>
+                <button>ш</button>
+                <button>щ</button>
+                <button>з</button>
+                <button>х</button>
+                <button>ъ</button>
+            </div>
+            <div class="second-line">
+                <button>ф</button>
+                <button>ы</button>
+                <button>в</button>
+                <button>а</button>
+                <button>п</button>
+                <button>р</button>
+                <button>о</button>
+                <button>л</button>
+                <button>д</button>
+                <button>ж</button>
+                <button>э</button>
+            </div>
+           <div class="third-line">
+                <button>я</button>
+                <button>ч</button>
+                <button>с</button>
+                <button>м</button>
+                <button>и</button>
+                <button>т</button>
+                <button>ь</button>
+                <button>б</button>
+                <button>ю</button>
+                <button class="clear">&larr;</button>
+           </div>
+ 
+            <button class="check-word">Проверить слово</button>
+        </div>
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>

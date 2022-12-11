@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+} 
+body {
+    background: rgb(23, 22, 22);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+h1 {
+    width: 160px;
+    height: 45px;
+    background: rgb(182, 79, 191);
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+h4 {
+    margin-bottom: 20px;
+}
+h1, h4 {
+    color: white;
+}
+input {
+    width: 66px;
+    height: 80px;
+    font-size: 40px;
+    text-align: center;
+    margin: 2px;
+    background: rgb(50, 46, 46);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    outline:rgb(121, 112, 112);
+    caret-color: transparent;
+
+}
+.game_field {
+    width: 352px;
+    height: 420px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    border-radius: 18px;
+    overflow: hidden;
+    pointer-events: none;
+}
+.active-area {
+    width: 400px;
+    height: 780px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== keybord ===== */
+.keyboard {
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.keyboard button {
+    border-radius: 8px;
+    color: white;
+    background: rgb(50, 46, 46);
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    margin: 2px 1px;
+}
+.first-line {
+    display: flex;
+}
+.first-line button {
+    width: 27.3px;
+    height: 46px;
+}
+.second-line {
+    display: flex;
+}
+.second-line button {
+    width: 30px;
+    height: 46px;
+}
+.third-line {
+    display: flex;
+}
+.third-line button {
+    width: 30px;
+    height: 46px; 
+}
+.clear {
+    border-radius: 8px;
+    width: 62px !important;
+}
+.check-word {
+    width: 350px;
+    height: 50px;
+}
