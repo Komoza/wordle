@@ -35,7 +35,7 @@ document.addEventListener('keydown', function(event) {
     }
     inpJump(document.activeElement, 'next');
     if (event.code == 'Enter') {
-        setTimeout(checkResult, 300);
+        setTimeout(checkResult, 1500);
     }
   });
 
