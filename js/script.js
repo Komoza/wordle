@@ -1,4 +1,4 @@
-const original_word = 'Смола'.toUpperCase();
+const original_word = 'улица'.toUpperCase();
 const buttons = document.querySelectorAll('button')
 let current_word = '';
 let curret_try = 1;
@@ -88,3 +88,9 @@ document.addEventListener('mouseup', function(event) {
         }
     }
 })
+
+
+function succsesLoading() {
+    const preloaderArea = document.getElementById('preloader');
+    preloaderArea.classList.add('off'); 
+} 
