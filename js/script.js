@@ -1,7 +1,18 @@
-const original_word = 'улица'.toUpperCase();
-const buttons = document.querySelectorAll('button')
+// import { words } from "./words.js";
+// function generateNewWord() {
+//     const original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+// }
+// generateNewWord();
+
+let original_word = 'Баран'.toUpperCase();
+const buttons = document.querySelectorAll('button');
+const objLvl = document.getElementById('level');
+const new_game = document.querySelectorAll('.new_game');
 let current_word = '';
-let curret_try = 1;
+let current_try = 1;
+let current_level = 1;
+
+objLvl.innerText = `Уровень ${current_level}`; 
 
 function inpJump(el, course) {
     if (course === 'next' && el.value.length == 1 && document.activeElement.id != 'last_letter') {
@@ -24,7 +35,7 @@ document.addEventListener('keydown', function(event) {
     }
     inpJump(document.activeElement, 'next');
     if (event.code == 'Enter') {
-        checkResult();
+        setTimeout(checkResult, 300);
     }
   });
 
@@ -33,7 +44,11 @@ function checkResult() {
         alert('Полностью введите слово');
         return;
     }
-    const items = document.querySelectorAll(`.try_${curret_try}`);
+    // if (words.find(current_word) === undefined) {
+    //     alert('Такого слова не существует');
+    //     return;
+    // }
+    const items = document.querySelectorAll(`.try_${current_try}`);
     for (let i = 0; i < 5; i++) {
         if (original_word[i] === current_word[i]) {
             setColor(items[i], 'right letter');
@@ -48,10 +63,17 @@ function checkResult() {
     }
 
     if (current_word === original_word) {
-        alert('ПОБЕДА!');
+        alert('Победа');
+        current_level += 1;
+        current_word = '';
+        objLvl.innerText = `Уровень ${current_level}`; 
+        current_try = 1;
+        new_game[0].focus();
+        cleanScreen();
+        original_word = 'Бобер'.toUpperCase();
         return;
     }
-    curret_try += 1;
+    current_try += 1;
     document.activeElement.nextSibling.nextSibling.focus();
     current_word = '';
     
@@ -76,7 +98,7 @@ function setColorBtn(word, key) {
     }
 }
 document.addEventListener('mouseup', function(event) {
-    const current_cell = document.querySelectorAll(`.try_${curret_try}`);
+    const current_cell = document.querySelectorAll(`.try_${current_try}`);
     for (let i = 0; i < 5; i++) {
         if (current_cell[i].value != '' && current_cell[i].id === 'last_letter') {
             current_cell[i].focus();
@@ -89,5 +111,25 @@ document.addEventListener('mouseup', function(event) {
     }
 })
 
+function cleanScreen(){
+    for (let i = 01; i < 6; i++) {
+        const items = document.querySelectorAll(`.try_${i}`);
+            for(let j = 0; j < 5; j++) {
+                items[j].classList.remove('right_letter');
+                items[j].classList.remove('wrong_position');
+                items[j].classList.remove('wrong_letter');
+                items[j].value = '';
+            }
+    }
+    for (let i = 0; i < buttons.length; ++i) {
+        buttons[i].classList.remove('right_letter');
+        buttons[i].classList.remove('wrong_position');
+        buttons[i].classList.remove('wrong_letter');
+    }
+    
+}
 
 
+// 1. сделать поражение
+// 2. подключить библиотеку слов
+// 3. подключить экранную клавиаутуру
