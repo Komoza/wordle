@@ -1,10 +1,10 @@
 .right_letter {
-    background-color: rgb(28, 185, 70);
+    background-color: rgb(28, 185, 70) !important;
 }
 .wrong_position {
-    background-color: rgb(221, 187, 13);
+    background-color: rgb(221, 187, 13) !important;
 }
 .wrong_letter {
-    background-color: grey;
-    color: rgb(50, 46, 46);
+    background-color: grey !important;
+    color: rgb(50, 46, 46) !important;
 }

@@ -1,4 +1,5 @@
 const original_word = 'Смола'.toUpperCase();
+const buttons = document.querySelectorAll('button')
 let current_word = '';
 let curret_try = 1;
 
@@ -35,14 +36,17 @@ function checkResult() {
     const items = document.querySelectorAll(`.try_${curret_try}`);
     for (let i = 0; i < 5; i++) {
         if (original_word[i] === current_word[i]) {
-            setColor(items[i], 'right letter')
+            setColor(items[i], 'right letter');
+            setColorBtn(items[i].value, 'right letter')
         }else if(original_word.indexOf(current_word[i]) != -1) {
             setColor(items[i], 'wrong position');
+            setColorBtn(items[i].value, 'wrong position')
         }else {
             setColor(items[i], 'wrong letter');
+            setColorBtn(items[i].value, 'wrong letter')
         }
     }
-    
+
     if (current_word === original_word) {
         alert('ПОБЕДА!');
         return;
@@ -64,4 +68,23 @@ function setColor(element, key) {
         element.classList.add('wrong_letter');
     }
 }
-
+function setColorBtn(word, key) {
+    for (let i = 0; i < buttons.length; ++i) {
+        if (buttons[i].innerText === word.toUpperCase() && buttons[i].classList != 'right_letter') {
+            setColor(buttons[i], key);
+        }
+    }
+}
+document.addEventListener('mouseup', function(event) {
+    const current_cell = document.querySelectorAll(`.try_${curret_try}`);
+    for (let i = 0; i < 5; i++) {
+        if (current_cell[i].value != '' && current_cell[i].id === 'last_letter') {
+            current_cell[i].focus();
+            return;
+        }
+        if (current_cell[i].value === '') {
+           current_cell[i].focus();
+           return; 
+        }
+    }
+})
