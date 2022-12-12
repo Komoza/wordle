@@ -90,7 +90,4 @@ document.addEventListener('mouseup', function(event) {
 })
 
 
-function succsesLoading() {
-    const preloaderArea = document.getElementById('preloader');
-    preloaderArea.classList.add('off'); 
-} 
+
