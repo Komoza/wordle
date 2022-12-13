@@ -3,7 +3,8 @@ const h1  = document.querySelectorAll('h1');
 const h2  = document.querySelectorAll('h2');
 let original_word = '';
 function generateNewWord() {
-    original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+    original_word = 'ОТБОР';
+    // original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
     // console.log(original_word)
 }
 generateNewWord();
@@ -68,10 +69,10 @@ function checkResult() {
         }
     }
     for (let i = 0; i < 5; i++) {
-        if(array_origWord.includes(current_word[i])) {
+        if(array_origWord.includes(array_currWord[i])) {
             setColor(items[i], 'wrong position');
             setColorBtn(items[i].value, 'wrong position')
-            array_origWord[array_origWord.indexOf(current_word[i])] = i + 100;
+            array_origWord[array_origWord.indexOf(array_currWord[i])] = i + 100;
         }else if(typeof array_currWord[i] != 'number') {
             setColor(items[i], 'wrong letter');
             setColorBtn(items[i].value, 'wrong letter')
@@ -93,7 +94,7 @@ function checkResult() {
         document.activeElement.nextSibling.nextSibling.focus();
         current_word = '';
     }else {
-        alert(`Вы дошли до ${current_level} уровня`);
+        alert(`Было загадано ${original_word}\nВы дошли до ${current_level} уровня`);
         current_level = 1;
         current_word = '';
         objLvl.innerText = `Уровень ${current_level}`;
