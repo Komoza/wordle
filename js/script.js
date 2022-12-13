@@ -3,9 +3,9 @@ const h1  = document.querySelectorAll('h1');
 const h2  = document.querySelectorAll('h2');
 let original_word = '';
 function generateNewWord() {
-    original_word = 'ОТБОР';
-    // original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
-    // console.log(original_word)
+    // original_word = 'ОТБОР';
+    original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+    console.log(original_word)
 }
 generateNewWord();
 
@@ -53,7 +53,7 @@ function checkResult() {
     if (current_word.length < 5) {
         return;
     }
-    if (words.includes(current_word.toLowerCase()) == false) {
+    if (words.includes(current_word.toUpperCase()) == false) {
         alert('Такого слова не существует');
         return;
     }
