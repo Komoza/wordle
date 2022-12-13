@@ -4,6 +4,7 @@ const h2  = document.querySelectorAll('h2');
 let original_word = '';
 function generateNewWord() {
     original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+    // console.log(original_word)
 }
 generateNewWord();
 
@@ -56,14 +57,22 @@ function checkResult() {
         return;
     }
     const items = document.querySelectorAll(`.try_${current_try}`);
+    let array_origWord = original_word.split('');
+    let array_currWord = current_word.split('');
     for (let i = 0; i < 5; i++) {
-        if (original_word[i] === current_word[i]) {
+        if (array_origWord[i] === array_currWord[i]) {
             setColor(items[i], 'right letter');
             setColorBtn(items[i].value, 'right letter')
-        }else if(original_word.indexOf(current_word[i]) != -1) {
+            array_origWord[i] = i;
+            array_currWord[i] = i + 5;
+        }
+    }
+    for (let i = 0; i < 5; i++) {
+        if(array_origWord.includes(current_word[i])) {
             setColor(items[i], 'wrong position');
             setColorBtn(items[i].value, 'wrong position')
-        }else {
+            array_origWord[array_origWord.indexOf(current_word[i])] = i + 100;
+        }else if(typeof array_currWord[i] != 'number') {
             setColor(items[i], 'wrong letter');
             setColorBtn(items[i].value, 'wrong letter')
         }
@@ -98,6 +107,7 @@ function checkResult() {
 
 function setColor(element, key) {
     if  (key === 'right letter') {
+        element.classList.remove('wrong_position');
         element.classList.add('right_letter');
     } 
     if (key === 'wrong position') {
