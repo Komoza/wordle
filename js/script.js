@@ -1,10 +1,12 @@
-// import { words } from "./words.js";
-// function generateNewWord() {
-//     const original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
-// }
-// generateNewWord();
+import { words } from "./words.js";
+const h1  = document.querySelectorAll('h1');
+const h2  = document.querySelectorAll('h2');
+let original_word = '';
+function generateNewWord() {
+    original_word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+}
+generateNewWord();
 
-let original_word = 'Баран'.toUpperCase();
 const buttons = document.querySelectorAll('button');
 const objLvl = document.getElementById('level');
 const new_game = document.querySelectorAll('.new_game');
@@ -26,28 +28,33 @@ function inpJump(el, course) {
     
 document.addEventListener('keydown', function(event) {
     if (event.code == 'Backspace') {
-        current_word = current_word.slice(0, -1)
+        current_word = current_word.slice(0, -1);
         inpJump(document.activeElement, 'prev');
         return;
     }
-    if (current_word.length != 5) {
-        current_word += document.activeElement.value.toUpperCase();
+    if (current_word.length !=5 && event.code != 'Enter' && event.key.search(/[А-яЁё]/) != -1) {
+        current_word += event.key.toUpperCase(); 
+        inpJump(document.activeElement, 'next');
     }
-    inpJump(document.activeElement, 'next');
-    if (event.code == 'Enter') {
-        setTimeout(checkResult, 1500);
+    if (event.code == 'Enter' && current_word.length === 5) {
+        checkResult();
+    }
+  });
+
+  document.addEventListener('keyup', function(event) {
+    if (current_word.length !=5 && event.code != 'Enter' && event.code != 'Backspace' && event.key.search(/[А-яЁё]/) === -1) {
+        document.activeElement.value = '';
     }
   });
 
 function checkResult() {
     if (current_word.length < 5) {
-        alert('Полностью введите слово');
         return;
     }
-    // if (words.find(current_word) === undefined) {
-    //     alert('Такого слова не существует');
-    //     return;
-    // }
+    if (words.includes(current_word.toLowerCase()) == false) {
+        alert('Такого слова не существует');
+        return;
+    }
     const items = document.querySelectorAll(`.try_${current_try}`);
     for (let i = 0; i < 5; i++) {
         if (original_word[i] === current_word[i]) {
@@ -63,19 +70,29 @@ function checkResult() {
     }
 
     if (current_word === original_word) {
-        alert('Победа');
         current_level += 1;
         current_word = '';
         objLvl.innerText = `Уровень ${current_level}`; 
         current_try = 1;
         new_game[0].focus();
         cleanScreen();
-        original_word = 'Бобер'.toUpperCase();
+        generateNewWord();
         return;
     }
-    current_try += 1;
-    document.activeElement.nextSibling.nextSibling.focus();
-    current_word = '';
+    if (current_try != 5) {
+        current_try += 1;
+        document.activeElement.nextSibling.nextSibling.focus();
+        current_word = '';
+    }else {
+        alert(`Вы дошли до ${current_level} уровня`);
+        current_level = 1;
+        current_word = '';
+        objLvl.innerText = `Уровень ${current_level}`;
+        current_try = 1;
+        new_game[0].focus();
+        cleanScreen();
+        generateNewWord();
+    }
     
 }
 
@@ -112,7 +129,7 @@ document.addEventListener('mouseup', function(event) {
 })
 
 function cleanScreen(){
-    for (let i = 01; i < 6; i++) {
+    for (let i = 1; i < 6; i++) {
         const items = document.querySelectorAll(`.try_${i}`);
             for(let j = 0; j < 5; j++) {
                 items[j].classList.remove('right_letter');
@@ -129,7 +146,4 @@ function cleanScreen(){
     
 }
 
-
-// 1. сделать поражение
-// 2. подключить библиотеку слов
 // 3. подключить экранную клавиаутуру
