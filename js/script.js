@@ -17,7 +17,7 @@ let current_try = 1;
 let current_level = 1;
 
 for (let i = 0; i < buttons.length; ++i) {
-    buttons[i].addEventListener('mouseover', function(event) {
+    buttons[i].addEventListener('click', function(event) {
         if (buttons[i].classList.contains('clear')){
             inpJump(document.activeElement, 'prev');
             current_word = current_word.slice(0, -1);
