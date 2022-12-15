@@ -17,18 +17,18 @@ h1 {
     background: rgb(182, 79, 191);
     text-align: center;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 2%;
     text-transform: uppercase;
 }
 h4 {
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 h1, h4 {
     color: white;
 }
 input {
-    width: 66px;
-    height: 80px;
+    max-width: 66px;
+    max-height: 80px;
     font-size: 40px;
     text-align: center;
     margin: 2px;
@@ -51,7 +51,7 @@ input {
     pointer-events: none;
 }
 .active-area {
-    min-width: 400px;
+    max-width: 400px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -100,4 +100,19 @@ input {
 .check-word {
     width: 350px;
     height: 50px;
+}
+
+@media (max-height: 683px) {
+    h1 {
+        display: none;
+    }
+    h4 {
+        margin-bottom: 2px;
+    }
+    .check-word {
+        height: 30px;
+    }
+    input {
+        font-size: 30px;
+    }
 }
