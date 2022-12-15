@@ -15,6 +15,25 @@ let current_word = '';
 let current_try = 1;
 let current_level = 1;
 
+for (let i = 0; i < buttons.length; ++i) {
+    buttons[i].addEventListener('click', function(event) {
+        if (buttons[i].classList.contains('clear')){
+            inpJump(document.activeElement, 'prev');
+            current_word = current_word.slice(0, -1);
+            document.activeElement.value = '';
+            return;
+        }
+        if (current_word.length !=5 && buttons[i].innerText != 'ПРОВЕРИТЬ СЛОВО') {
+            document.activeElement.value = buttons[i].innerText;
+            current_word += buttons[i].innerText.toUpperCase(); 
+            inpJump(document.activeElement, 'next');
+        }
+        if (buttons[i].innerText == 'ПРОВЕРИТЬ СЛОВО' && current_word.length === 5) {
+            checkResult();
+        } 
+    })
+}
+
 objLvl.innerText = `Уровень ${current_level}`; 
 
 function inpJump(el, course) {
@@ -27,7 +46,7 @@ function inpJump(el, course) {
     }
 }
     
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function drawLetter(event) {
     if (event.code == 'Backspace') {
         current_word = current_word.slice(0, -1);
         inpJump(document.activeElement, 'prev');
@@ -88,7 +107,7 @@ function checkResult() {
         generateNewWord();
         return;
     }
-    if (current_try != 5) {
+    if (current_try != 6) {
         current_try += 1;
         document.activeElement.nextSibling.nextSibling.focus();
         current_word = '';
@@ -139,7 +158,7 @@ document.addEventListener('mouseup', function(event) {
 })
 
 function cleanScreen(){
-    for (let i = 1; i < 6; i++) {
+    for (let i = 1; i < 7; i++) {
         const items = document.querySelectorAll(`.try_${i}`);
             for(let j = 0; j < 5; j++) {
                 items[j].classList.remove('right_letter');
@@ -156,4 +175,3 @@ function cleanScreen(){
     
 }
 
-// 3. подключить экранную клавиаутуру

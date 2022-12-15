@@ -10,7 +10,6 @@ body {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    pointer-events: none;
 }
 h1 {
     width: 160px;
@@ -43,16 +42,17 @@ input {
 }
 .game_field {
     width: 352px;
-    height: 420px;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
     justify-self: center;
     border-radius: 18px;
     overflow: hidden;
+    pointer-events: none;
 }
 .active-area {
-    width: 400px;
-    height: 780px;
+    min-width: 400px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
