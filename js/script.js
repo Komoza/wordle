@@ -1,12 +1,5 @@
 import { words } from "./words.js";
 
-document.body.addEventListener('touchstart', e => {
-    mobileBrowser = true; const inputs = querySelectorAll('input');
-    for (let i = 0; i < buttons.length; ++i) {
-        inputs[i].setAttribute('readonly', 'readonly');
-    } 
-});
-
 const h1  = document.querySelectorAll('h1');
 const h2  = document.querySelectorAll('h2');
 let original_word = '';
@@ -24,7 +17,7 @@ let current_try = 1;
 let current_level = 1;
 
 for (let i = 0; i < buttons.length; ++i) {
-    buttons[i].addEventListener('click', function(event) {
+    buttons[i].addEventListener('mousedown', function(event) {
         if (buttons[i].classList.contains('clear')){
             inpJump(document.activeElement, 'prev');
             current_word = current_word.slice(0, -1);
